@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>しし座ホバー切り替え</title>
+  <title>しし座ホバー＆タップ切り替え</title>
   <style>
     .leo-container {
       position: relative;
@@ -10,44 +10,56 @@
     }
 
     .leo-image {
-      width: 600px;   /* 必要に応じて変更 */
+      width: 600px;
       height: auto;
       display: block;
       transition: opacity 0.4s ease;
-    }
-
-    /* 通常表示：星だけ */
-    .leo-base {
       position: absolute;
       top: 0;
       left: 0;
+    }
+
+    /* 初期状態：星だけ */
+    #leoBase {
       opacity: 1;
     }
 
-    /* 星座線入り：最初は非表示 */
-    .leo-lines {
-      position: absolute;
-      top: 0;
-      left: 0;
+    /* 星座線入り：非表示 */
+    #leoLines {
       opacity: 0;
     }
 
-    /* マウスオーバーで切り替え */
-    .leo-container:hover .leo-base {
+    /* PC用：マウスオーバーで切り替え */
+    .leo-container:hover #leoBase {
       opacity: 0;
     }
-    .leo-container:hover .leo-lines {
+    .leo-container:hover #leoLines {
       opacity: 1;
     }
   </style>
 </head>
 <body>
-  <h1>しし座：マウスオーバーで星座線表示</h1>
+  <h1>しし座：マウスオーバー＆タップで星座線表示</h1>
 
-  <div class="leo-container">
-    <img src="leo_base.jpg"  class="leo-image leo-base"  alt="しし座（星のみ）">
-    <img src="leo_lines.jpg" class="leo-image leo-lines" alt="しし座（星座線入り）">
+  <div class="leo-container" onclick="toggleImage()">
+    <img id="leoBase"  src="leo-base.jpg"  class="leo-image" alt="しし座（星のみ）">
+    <img id="leoLines" src="leo-lines.jpg" class="leo-image" alt="しし座（星座線入り）">
   </div>
+
+  <script>
+    function toggleImage() {
+      const base  = document.getElementById("leoBase");
+      const lines = document.getElementById("leoLines");
+
+      if (base.style.opacity === "0") {
+        base.style.opacity = "1";
+        lines.style.opacity = "0";
+      } else {
+        base.style.opacity = "0";
+        lines.style.opacity = "1";
+      }
+    }
+  </script>
 
 </body>
 </html>
