@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>しし座ホバー切り替え</title>
+  <style>
+    .leo-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .leo-image {
+      width: 600px;   /* 必要に応じて変更 */
+      height: auto;
+      display: block;
+      transition: opacity 0.4s ease;
+    }
+
+    /* 通常表示：星だけ */
+    .leo-base {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 1;
+    }
+
+    /* 星座線入り：最初は非表示 */
+    .leo-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    /* マウスオーバーで切り替え */
+    .leo-container:hover .leo-base {
+      opacity: 0;
+    }
+    .leo-container:hover .leo-lines {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>しし座：マウスオーバーで星座線表示</h1>
+
+  <div class="leo-container">
+    <img src="leo_base.jpg"  class="leo-image leo-base"  alt="しし座（星のみ）">
+    <img src="leo_lines.jpg" class="leo-image leo-lines" alt="しし座（星座線入り）">
+  </div>
+
+</body>
+</html>
